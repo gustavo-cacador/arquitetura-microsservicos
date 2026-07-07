@@ -1,4 +1,4 @@
-package com.gustavoronchi.microsservico_cliente.application;
+package com.gustavoronchi.microsservico_cliente.service;
 
 import com.gustavoronchi.microsservico_cliente.domain.Cliente;
 import com.gustavoronchi.microsservico_cliente.infra.repository.ClienteRepository;
@@ -21,7 +21,7 @@ public class ClienteService {
         return clienteRepository.save(cliente);
     }
 
-    public Optional<Cliente> buscarPorCPF(String cpf) {
-        return clienteRepository.buscarPorCpf(cpf);
+    public Optional<Cliente> buscarPorCpf(String cpf) {
+        return clienteRepository.findByCpf(cpf);
     }
 }
