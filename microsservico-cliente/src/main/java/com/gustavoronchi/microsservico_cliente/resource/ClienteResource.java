@@ -35,6 +35,7 @@ public class ClienteResource {
         return ResponseEntity.created(headerLocation).build();
     }
 
+    // melhorar endpoint (criar um response) e ResponseEntity sem tipo
     @GetMapping(params = "cpf")
     public ResponseEntity dadosCliente(@RequestParam("cpf") String cpf) {
         var cliente = clienteService.buscarPorCpf(cpf);
