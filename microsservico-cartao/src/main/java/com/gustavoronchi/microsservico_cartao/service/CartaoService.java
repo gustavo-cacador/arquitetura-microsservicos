@@ -21,4 +21,9 @@ public class CartaoService {
     public Cartao salvar(Cartao cartao) {
         return cartaoRepository.save(cartao);
     }
+
+    public List<Cartao> buscarCartaoRendaMenorIgual(Long renda) {
+        var rendaBigDecimal = BigDecimal.valueOf(renda);
+        return cartaoRepository.findByRendaLessThanEqual(rendaBigDecimal);
+    }
 }

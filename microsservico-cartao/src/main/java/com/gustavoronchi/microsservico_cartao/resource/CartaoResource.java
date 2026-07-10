@@ -7,6 +7,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("cartoes")
 public class CartaoResource {
@@ -27,5 +29,11 @@ public class CartaoResource {
         Cartao cartao = cartaoSaveRequest.toModel();
         cartaoService.salvar(cartao);
         return ResponseEntity.status(HttpStatus.CREATED).build();
+    }
+
+    @GetMapping(params = "renda")
+    public ResponseEntity<List<Cartao>> buscarCartoesRendaAte(@RequestParam("renda") Long renda) {
+        List<Cartao> cartoes = cartaoService.buscarCartaoRendaMenorIgual(renda);
+        return ResponseEntity.ok(cartoes);
     }
 }
